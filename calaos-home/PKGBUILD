@@ -1,0 +1,41 @@
+# Maintainer: Raoul Hecky <raoul-arch@calaos.fr>
+
+_pkgname=calaos_mobile
+pkgname=calaos-home
+pkgver=3.3
+pkgrel=1
+pkgdesc="Calaos home automation UI service"
+url="https://calaos.fr"
+license=('GPL')
+arch=('x86_64')
+depends=('qt5-base' 'qt5-graphicaleffects' 'qt5-declarative' 'qt5-imageformats' 'qt5-quickcontrols' 'qt5-quickcontrols2'
+         'qt5-svg' 'qt5-virtualkeyboard' 'qt5-webchannel' 'qt5-webengine' 'qt5-websockets' 'qt5-webview' 'qt5-xmlpatterns')
+makedepends=('qt5-tools')
+conflicts=('calaos-home')
+replaces=('calaos-home')
+
+source=('git://github.com/calaos/calaos_mobile.git#commit=afa7081a56547dd9c453142fd4ca24fbfa47a89f'
+	'calaos-home.service')
+sha256sums=('SKIP'
+            'f213602bf1b7552a7962d880ce238d4c811d97bc968818979e5d2a975f5e76cb')
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+  mkdir -p build
+}
+
+build() {
+  cd "$srcdir/$_pkgname/build"
+  qmake-qt5 ../desktop.pro \
+      QMAKE_CFLAGS="${CFLAGS}" \
+      QMAKE_CXXFLAGS="${CXXFLAGS}"
+
+  make
+}
+
+package() {
+  cd "$srcdir/$_pkgname/build"
+
+  install -Dm755 "calaos_home" "$pkgdir/usr/bin/calaos_home" 
+  install -Dm644 "${srcdir}/../${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+}

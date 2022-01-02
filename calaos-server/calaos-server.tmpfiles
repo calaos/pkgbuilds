@@ -1,0 +1,2 @@
+d /var/lib/calaos/cache 0750 root root
+d /etc/calaos 0640 root root

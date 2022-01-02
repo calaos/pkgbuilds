@@ -1,0 +1,17 @@
+
+*.tar.bz2
+*.tar.gz
+*.tar.xz
+*.tar.zstd
+*.tar.zst
+*.sig
+
+pkg
+src
+
+calaos-ddns/calaos-ddns
+calaos-home/calaos_mobile
+calaos-server/calaos_base
+calaos-web-app/calaos-web-app
+knxd/knxd
+ola/ola

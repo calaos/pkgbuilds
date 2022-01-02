@@ -1,0 +1,15 @@
+[Unit]
+Description=Calaos home automation touchscreen UI
+After=xserver-nodm.service
+
+[Service]
+Environment=DISPLAY=:0
+Environment=QTWEBENGINE_CHROMIUM_FLAGS="--no-sandbox"
+ExecStart=/usr/bin/calaos_home_qt --config /etc/calaos --cache /var/lib/calaos/cache
+Restart=always
+RestartSec=0
+Type=simple
+User=root
+
+[Install]
+WantedBy=multi-user.target

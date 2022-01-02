@@ -1,0 +1,38 @@
+# Maintainer: Raoul Hecky <raoul-arch@calaos.fr>
+
+_pkgname=calaos-dns
+pkgname=calaos-ddns
+pkgver=1.0
+pkgrel=1
+pkgdesc="Calaos Dynamic DNS update service"
+url="https://calaos.fr"
+license=('GPL')
+arch=('x86_64')
+depends=('gcc-libs')
+makedepends=('go')
+conflicts=('calaos-ddns')
+replaces=('calaos-ddns')
+options=('!strip')
+
+source=("${pkgname}::git://github.com/calaos/calaos_ddns.git#commit=27ebdfcd54b81d5c7d463a41af56190a8345f143"
+        "${_pkgname}.service"
+        "${_pkgname}.timer")
+sha256sums=('SKIP'
+            '89d915ffdded7d3880841e10a004b10eddf5dee7cccad01a82ac64ef2554e4a5'
+            '7e3104a793417b064934e4fa593ef8d3c2803a300529c657f31d088447c91741')
+
+build() {
+  cd "$srcdir/$pkgname"
+  # Respect LDFLAGS
+  EXTLDFLAGS=${LDFLAGS}
+  LDFLAGS=""
+  GOCACHE="${srcdir}/cache" go build -v \
+      -ldflags "-linkmode external -extldflags '${EXTLDFLAGS}' -s -w ${LDFLAGS}"
+}
+
+package() {
+  install -Dm644 "${_pkgname}.service" "$pkgdir/usr/lib/systemd/system/${_pkgname}.service"
+  install -Dm644 "${_pkgname}.timer" "$pkgdir/usr/lib/systemd/system/${_pkgname}.timer"
+
+  install -Dm755 "$srcdir/$pkgname/calaos_ddns" "$pkgdir/usr/bin/calaos_ddns"
+}
