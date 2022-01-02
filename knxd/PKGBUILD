@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 conflicts=('knxd' 'eibd')
 provides=('knxd')
 replaces=('eibd')
-depends=('gcc-libs' 'libev')
+depends=('gcc-libs' 'libev' 'libusb')
 optdepends=('libsystemd' 'libusb')
 makedepends=('fmt' 'git' 'libtool' 'autoconf' 'automake' 'pkgconfig')
 
