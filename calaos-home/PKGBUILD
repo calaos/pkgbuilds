@@ -2,19 +2,19 @@
 
 _pkgname=calaos_mobile
 pkgname=calaos-home
-pkgver=3.3
+pkgver=4.0
 pkgrel=1
 pkgdesc="Calaos home automation UI service"
 url="https://calaos.fr"
 license=('GPL')
 arch=('x86_64')
-depends=('qt5-base' 'qt5-graphicaleffects' 'qt5-declarative' 'qt5-imageformats' 'qt5-quickcontrols' 'qt5-quickcontrols2'
-         'qt5-svg' 'qt5-virtualkeyboard' 'qt5-webchannel' 'qt5-webengine' 'qt5-websockets' 'qt5-webview' 'qt5-xmlpatterns')
-makedepends=('qt5-tools')
+depends=('qt6-base' 'qt6-5compat' 'qt6-declarative' 'qt6-imageformats'
+         'qt6-svg' 'qt6-virtualkeyboard' 'qt6-webchannel' 'qt6-webengine' 'qt6-websockets' 'qt6-webview')
+makedepends=('qt6-tools')
 conflicts=('calaos-home')
 replaces=('calaos-home')
 
-source=('git://github.com/calaos/calaos_mobile.git#commit=afa7081a56547dd9c453142fd4ca24fbfa47a89f'
+source=('git://github.com/calaos/calaos_mobile.git#commit=cd0e0961706cdd76b60ffcb1912a07d237478355'
 	'calaos-home.service')
 sha256sums=('SKIP'
             'f213602bf1b7552a7962d880ce238d4c811d97bc968818979e5d2a975f5e76cb')
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname/build"
-  qmake-qt5 ../desktop.pro \
+  qmake6 ../desktop.pro \
       QMAKE_CFLAGS="${CFLAGS}" \
       QMAKE_CXXFLAGS="${CXXFLAGS}"
 
