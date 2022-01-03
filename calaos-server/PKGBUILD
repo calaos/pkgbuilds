@@ -15,7 +15,7 @@ source=('git://github.com/calaos/calaos_base.git#commit=2ab947209716afbf33234885
 	'calaos-server.service'
         'calaos-server.tmpfiles')
 sha256sums=('SKIP'
-	    'c09404d0d6219884e55580f564d144601e62eb6099b23ec45bdc3b7312fe28c4'
+	    '58b2856a751bff57d816a1e426432209e7ee732324d2998799ed8f8c805d9555'
             '93e6103ebafdb19fc0ab91798ffdcec54ab3ce3e43a916f41186231d32fd6c3e')
 
 prepare() {
