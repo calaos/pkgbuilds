@@ -10,7 +10,7 @@ depends=('libsigc++' 'owfs' 'jansson' 'luajit' 'libusb' 'ola' 'knxd' 'libuv' 'cu
 makedepends=('pkgconfig' 'libtool' 'autoconf' 'automake' 'git')
 conflicts=('calaos-server')
 replaces=('calaos-server')
-_srcdir="$srcdir/calaos_base"
+_pkgdir="calaos_base"
 
 source=('git://github.com/calaos/calaos_base.git#commit=2ab947209716afbf332348855682a8253e27864a'
 	'calaos-server.service'
@@ -20,13 +20,13 @@ sha256sums=('SKIP'
             '93e6103ebafdb19fc0ab91798ffdcec54ab3ce3e43a916f41186231d32fd6c3e')
 
 prepare() {
-  cd "$_srcdir"
+  cd "$srcdir/$_pkgdir"
   autopoint --force
   autoreconf -vif
 }
 
 build() {
-  cd "$_srcdir"
+  cd "$srcdir/$_pkgdir"
 
   #create version file
   cat > src/bin/calaos_server/version.h << EOF
@@ -44,7 +44,7 @@ EOF
 }
 
 package() {
-  cd "$_srcdir"
+  cd "$srcdir/$_pkgdir"
   make DESTDIR="$pkgdir" install
 
   install -Dm644 "${srcdir}/../${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
