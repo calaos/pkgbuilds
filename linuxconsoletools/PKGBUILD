@@ -9,8 +9,8 @@ license=('GPL2')
 arch=('x86_64')
 depends=('gcc-libs')
 makedepends=('pkgconfig' 'libtool' 'autoconf' 'automake')
-conflicts=('calaos-server')
-replaces=('calaos-server')
+conflicts=('linuxconsoletools')
+replaces=('linuxconsoletools')
 
 source=('http://downloads.sourceforge.net/sourceforge/linuxconsole/linuxconsoletools-1.6.0.tar.bz2'
 	'usb-serial-touchscreen@.service')
