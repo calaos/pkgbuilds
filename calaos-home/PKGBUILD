@@ -13,6 +13,7 @@ depends=('qt6-base' 'qt6-5compat' 'qt6-declarative' 'qt6-imageformats'
 makedepends=('qt6-tools')
 conflicts=('calaos-home')
 replaces=('calaos-home')
+_srcdir="$srcdir/calaos_mobile"
 
 source=('git://github.com/calaos/calaos_mobile.git#commit=cd0e0961706cdd76b60ffcb1912a07d237478355'
 	'calaos-home.service')
@@ -20,12 +21,22 @@ sha256sums=('SKIP'
             'f213602bf1b7552a7962d880ce238d4c811d97bc968818979e5d2a975f5e76cb')
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "$_srcdir"
   mkdir -p build
 }
 
 build() {
-  cd "$srcdir/$_pkgname/build"
+  cd "$_srcdir"
+
+  #create version file
+  cat > src/version.h << EOF
+#ifndef VERSION_H
+#define VERSION_H
+#define PKG_VERSION_STR "$pkgver"
+#endif
+EOF
+
+  cd "$_srcdir/build"
   qmake6 ../desktop.pro \
       QMAKE_CFLAGS="${CFLAGS}" \
       QMAKE_CXXFLAGS="${CXXFLAGS}"
@@ -34,7 +45,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname/build"
+  cd "$_srcdir/build"
 
   install -Dm755 "calaos_home" "$pkgdir/usr/bin/calaos_home" 
   install -Dm644 "${srcdir}/../${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"

@@ -13,6 +13,7 @@ makedepends=('go')
 conflicts=('calaos-ddns')
 replaces=('calaos-ddns')
 options=('!strip')
+_srcdir="$srcdir/$pkgname"
 
 source=("${pkgname}::git://github.com/calaos/calaos_ddns.git#commit=27ebdfcd54b81d5c7d463a41af56190a8345f143"
         "${_pkgname}.service"
@@ -22,7 +23,17 @@ sha256sums=('SKIP'
             '7e3104a793417b064934e4fa593ef8d3c2803a300529c657f31d088447c91741')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$_srcdir"
+
+  #create version file
+  cat > version.go << EOF
+package main
+
+var (    
+    BuildVersion string = "$pkgver"
+)
+EOF
+
   # Respect LDFLAGS
   EXTLDFLAGS=${LDFLAGS}
   LDFLAGS=""
