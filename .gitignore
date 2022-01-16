@@ -13,5 +13,6 @@ calaos-ddns/calaos-ddns
 calaos-home/calaos_mobile
 calaos-server/calaos_base
 calaos-web-app/calaos-web-app
+calaos-install-tools/calaos-install-tools
 knxd/knxd
 ola/ola

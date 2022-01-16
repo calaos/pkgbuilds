@@ -1,0 +1,24 @@
+# Maintainer: Raoul Hecky <raoul-arch@calaos.fr>
+
+pkgname=calaos-install-tools
+pkgver=1.0
+pkgrel=1
+pkgdesc="Calaos Install Tools"
+url="https://calaos.fr"
+license=('GPL')
+arch=('x86_64')
+depends=('bash')
+conflicts=('calaos-install-tools')
+replaces=('calaos-install-tools')
+options=('!strip')
+_pkgdir="$pkgname"
+
+source=("${pkgname}::git://github.com/calaos/calaos-install-tools.git#commit=1f9aef748e710ebf3a94c2743bcfa30fec302248"
+        )
+sha256sums=('SKIP'
+            )
+
+package() {
+  install -Dm755 "$srcdir/$pkgname/src/calaos_migrate.sh" "$pkgdir/usr/bin/calaos_migrate.sh"
+  install -Dm755 "$srcdir/$pkgname/src/calaos_install.sh" "$pkgdir/usr/bin/calaos_install.sh"
+}
