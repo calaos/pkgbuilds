@@ -49,6 +49,6 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
 sha256sums=('0b48dbb8442964be46e6a3293531e8fae768ab454177a103598f0fd4cdaa9b52'
-            '3e065dd87c9ae7573165721a60d56756952bd8199b411a508dd343f64c755c7a'
+            'ba2fe8f428b3db56fdee622b3db0d9265e34275218cfbae9866be2000fde9df4'
             '3a86716e9036e97d885e9b5f37c7f87d9c2872435e4acf9fc4c9157264cf387b'
             '8f0fbe06c8d6e8fdf37feb31f244930025d76785451f9049fd90fe6e23c259f6')
