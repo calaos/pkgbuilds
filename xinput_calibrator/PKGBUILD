@@ -1,0 +1,44 @@
+# Maintainer: Calaos Team <raoul-arch@calaos.fr>
+
+pkgname=xinput_calibrator
+pkgver=0.8.0
+pkgrel=1
+pkgdesc="Generic touchscreen calibration program for X.Org (with matrix calibration patches)"
+arch=('i686' 'x86_64')
+url="http://www.freedesktop.org/wiki/Software/xinput_calibrator/"
+license=('MIT')
+makedepends=('git')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+source=("${pkgname}::git+https://github.com/sebt3/xinput_calibrator.git"
+  "0001-Rewrite-float-array-code-to-prevent-segfault.patch"
+  "0002-Add-code-for-outputing-Matrix-calibration-to-file.patch")
+noextract=()
+sha256sums=('SKIP'
+  "a19a2c6a9442a1dfbcc2308f2202972f5b291d90b9541ca7f40f6bfcee222a70"
+  "12057e47fa3037f81f66d7705827f7b6e428a337fbbc3cc52b05db35dbf5c94b")
+
+prepare() {
+  cd "$srcdir/${pkgname}"
+  patch --forward --strip=1 --input="${srcdir}/0001-Rewrite-float-array-code-to-prevent-segfault.patch"
+  patch --forward --strip=1 --input="${srcdir}/0002-Add-code-for-outputing-Matrix-calibration-to-file.patch"
+}
+
+build() {
+	cd "$srcdir/${pkgname}"
+	./autogen.sh --with-gui=x11
+	make
+}
+
+package() {
+    cd "$srcdir/${pkgname}"
+    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+#    install -Dm644 scripts/xinput_calibrator.svg "$pkgdir/usr/share/pixmaps/xinput_calibrator.svg"
+#    install -Dm644 scripts/xinput_calibrator.xpm "$pkgdir/usr/share/pixmaps/xinput_calibrator.xpm"
+#    install -Dm644 scripts/xinput_calibrator.desktop "$pkgdir/usr/share/applications/xinput_calibrator.desktop"
+    install -Dm755 src/xinput_calibrator "$pkgdir/usr/bin/xinput_calibrator"
+#    cd man
+#    gzip xinput_calibrator.1
+#    install -Dm644 xinput_calibrator.1.gz "$pkgdir/usr/share/man/man1/xinput_calibrator.1.gz"
+}
+
