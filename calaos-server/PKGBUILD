@@ -14,10 +14,10 @@ _pkgdir="calaos_base"
 
 source=('git://github.com/calaos/calaos_base.git#commit=2ab947209716afbf332348855682a8253e27864a'
 	'calaos-server.service'
-        'calaos-server.tmpfiles')
+  'calaos-server.tmpfiles')
 sha256sums=('SKIP'
-	    '58b2856a751bff57d816a1e426432209e7ee732324d2998799ed8f8c805d9555'
-            '93e6103ebafdb19fc0ab91798ffdcec54ab3ce3e43a916f41186231d32fd6c3e')
+	    '112fe58ee79efbf2016b0247d8faae599cb6a5c476d0716eb8706ebb0dce1b41'
+      '93e6103ebafdb19fc0ab91798ffdcec54ab3ce3e43a916f41186231d32fd6c3e')
 
 prepare() {
   cd "$srcdir/$_pkgdir"
