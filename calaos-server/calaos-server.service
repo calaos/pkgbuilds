@@ -3,6 +3,7 @@ Description=Calaos home automation server service
 After=network.target
 
 [Service]
+ExecStartPre=/usr/bin/mkdir -p /var/lib/calaos/cache /etc/calaos
 ExecStart=/usr/bin/calaos_server --config /etc/calaos --cache /var/lib/calaos/cache
 Type=simple
 User=root
