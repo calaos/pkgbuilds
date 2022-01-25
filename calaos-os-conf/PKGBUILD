@@ -1,0 +1,32 @@
+# Maintainer: Raoul Hecky <raoul-arch@calaos.fr>
+
+pkgname=calaos-os-conf
+pkgver=1.0
+pkgrel=1
+pkgdesc="Calaos OS Config"
+url="https://calaos.fr"
+license=('GPL')
+arch=('x86_64')
+depends=('bash')
+conflicts=('calaos-os-conf')
+replaces=('calaos-os-conf')
+options=('!strip')
+_pkgdir="$pkgname"
+
+source=("${pkgname}::git://github.com/calaos/calaos-os-conf.git#commit=33f794eb29636a0e0d02d5b4c10a2a0f100a97cf"
+        )
+sha256sums=('SKIP'
+            )
+
+package() {
+  install -Dm755 "$srcdir/$pkgname/bin/haproxy_gencert.sh" "$pkgdir/usr/bin/haproxy_gencert.sh"
+  install -Dm755 "$srcdir/$pkgname/bin/xinitrc" "$pkgdir/root/.xinitrc"
+
+  install -Dm0644 "$srcdir/$pkgname/conf/ratpoisonrc" "$pkgdir/root/.ratpoisonrc"
+  install -Dm0644 "$srcdir/$pkgname/conf/haproxy-calaos.cfg" "$pkgdir/etc/haproxy/haproxy-calaos.cfg"
+
+  install -Dm644 "$srcdir/$pkgname/systemd/xsession.service" "${pkgdir}/usr/lib/systemd/system/xsession.service"
+
+  install -Dm644 "$srcdir/$pkgname/systemd/haproxy.conf" "${pkgdir}/etc/systemd/system/haproxy.service.d/10-override.conf"
+  install -Dm644 "$srcdir/$pkgname/systemd/systemd-networkd-wait-online.conf" "${pkgdir}/etc/systemd/system/systemd-networkd-wait-online.service.d/10-override.conf"
+}
