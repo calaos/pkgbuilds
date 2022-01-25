@@ -20,9 +20,9 @@ sha256sums=('SKIP'
 
 package() {
   install -Dm755 "$srcdir/$pkgname/bin/haproxy_gencert.sh" "$pkgdir/usr/bin/haproxy_gencert.sh"
-  install -Dm755 "$srcdir/$pkgname/bin/xinitrc" "$pkgdir/root/.xinitrc"
+  install -Dm750 "$srcdir/$pkgname/bin/xinitrc" "$pkgdir/root/.xinitrc"
 
-  install -Dm0644 "$srcdir/$pkgname/conf/ratpoisonrc" "$pkgdir/root/.ratpoisonrc"
+  install -Dm0640 "$srcdir/$pkgname/conf/ratpoisonrc" "$pkgdir/root/.ratpoisonrc"
   install -Dm0644 "$srcdir/$pkgname/conf/haproxy-calaos.cfg" "$pkgdir/etc/haproxy/haproxy-calaos.cfg"
 
   install -Dm644 "$srcdir/$pkgname/systemd/xsession.service" "${pkgdir}/usr/lib/systemd/system/xsession.service"
