@@ -18,7 +18,7 @@ _pkgdir="calaos_mobile"
 source=('git://github.com/calaos/calaos_mobile.git#commit=cd0e0961706cdd76b60ffcb1912a07d237478355'
 	'calaos-home.service')
 sha256sums=('SKIP'
-            '4a8adb026151369e491d82f0c9dea79a47e57934e116a4e75d635cfb476c1d96')
+            'e06a06c17a108e2b0f14dcad9ca854152f55536984ffee16a0ac34b159dd782e')
 
 prepare() {
   cd "$srcdir/$_pkgdir"
