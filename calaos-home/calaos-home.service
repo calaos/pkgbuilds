@@ -1,17 +1,15 @@
 [Unit]
 Description=Calaos home automation touchscreen UI
-Requires=xsession.service
 
 [Service]
 Environment=DISPLAY=:0
 Environment=QTWEBENGINE_CHROMIUM_FLAGS="--no-sandbox"
-ExecStartPre=/usr/bin/sleep 1
 ExecStartPre=/usr/bin/mkdir -p /var/lib/calaos/cache /etc/calaos
 ExecStart=/usr/bin/calaos_home --config /etc/calaos --cache /var/lib/calaos/cache
 Restart=always
-RestartSec=0
+RestartSec=2s
 Type=simple
 User=root
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=graphical.target
