@@ -1,5 +1,6 @@
 [Unit]
 Description=Calaos home automation touchscreen UI
+After=xsession.service
 
 [Service]
 Environment=DISPLAY=:0
