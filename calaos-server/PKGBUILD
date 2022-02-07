@@ -10,6 +10,7 @@ depends=('libsigc++' 'owfs' 'jansson' 'luajit' 'libusb' 'ola' 'knxd' 'libuv' 'cu
 makedepends=('pkgconfig' 'libtool' 'autoconf' 'automake' 'git')
 conflicts=('calaos-server')
 replaces=('calaos-server')
+provides=('calaos-server')
 _pkgdir="calaos_base"
 
 source=('git://github.com/calaos/calaos_base.git#commit=2ab947209716afbf332348855682a8253e27864a'

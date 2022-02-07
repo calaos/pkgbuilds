@@ -11,6 +11,7 @@ depends=('gcc-libs')
 makedepends=('pkgconfig' 'libtool' 'autoconf' 'automake')
 conflicts=('linuxconsoletools')
 replaces=('linuxconsoletools')
+provides=('linuxconsoletools')
 
 source=('http://downloads.sourceforge.net/sourceforge/linuxconsole/linuxconsoletools-1.6.0.tar.bz2'
 	'usb-serial-touchscreen@.service')

@@ -12,6 +12,7 @@ depends=('gcc-libs')
 makedepends=('go')
 conflicts=('calaos-ddns')
 replaces=('calaos-ddns')
+provides=('calaos-ddns')
 options=('!strip')
 _pkgdir="$pkgname"
 

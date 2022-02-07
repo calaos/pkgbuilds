@@ -10,6 +10,7 @@ arch=('x86_64')
 depends=('bash')
 conflicts=('calaos-install-tools')
 replaces=('calaos-install-tools')
+provides=('calaos-install-tools')
 options=('!strip')
 _pkgdir="$pkgname"
 

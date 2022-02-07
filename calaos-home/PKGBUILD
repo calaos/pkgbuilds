@@ -13,6 +13,7 @@ depends=('qt6-base' 'qt6-5compat' 'qt6-declarative' 'qt6-imageformats'
 makedepends=('qt6-tools')
 conflicts=('calaos-home')
 replaces=('calaos-home')
+provides=('calaos-home')
 _pkgdir="calaos_mobile"
 
 source=('git://github.com/calaos/calaos_mobile.git#commit=cd0e0961706cdd76b60ffcb1912a07d237478355'
