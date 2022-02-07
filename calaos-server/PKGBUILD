@@ -8,9 +8,8 @@ license=('GPL')
 arch=('x86_64')
 depends=('libsigc++' 'owfs' 'jansson' 'luajit' 'libusb' 'ola' 'knxd' 'libuv' 'curl' 'sqlite' 'mosquitto' 'imagemagick' 'lua-socket')
 makedepends=('pkgconfig' 'libtool' 'autoconf' 'automake' 'git')
-conflicts=('calaos-server')
-replaces=('calaos-server')
-provides=('calaos-server')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 _pkgdir="calaos_base"
 
 source=('git://github.com/calaos/calaos_base.git#commit=2ab947209716afbf332348855682a8253e27864a'

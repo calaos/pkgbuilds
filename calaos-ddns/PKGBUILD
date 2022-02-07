@@ -10,9 +10,8 @@ license=('GPL')
 arch=('x86_64')
 depends=('gcc-libs')
 makedepends=('go')
-conflicts=('calaos-ddns')
-replaces=('calaos-ddns')
-provides=('calaos-ddns')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 options=('!strip')
 _pkgdir="$pkgname"
 

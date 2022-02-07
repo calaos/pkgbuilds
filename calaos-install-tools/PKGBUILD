@@ -8,9 +8,8 @@ url="https://calaos.fr"
 license=('GPL')
 arch=('x86_64')
 depends=('bash')
-conflicts=('calaos-install-tools')
-replaces=('calaos-install-tools')
-provides=('calaos-install-tools')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 options=('!strip')
 _pkgdir="$pkgname"
 

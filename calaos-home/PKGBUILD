@@ -11,9 +11,8 @@ arch=('x86_64')
 depends=('qt6-base' 'qt6-5compat' 'qt6-declarative' 'qt6-imageformats'
          'qt6-svg' 'qt6-virtualkeyboard' 'qt6-webchannel' 'qt6-webengine' 'qt6-websockets' 'qt6-webview')
 makedepends=('qt6-tools')
-conflicts=('calaos-home')
-replaces=('calaos-home')
-provides=('calaos-home')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 _pkgdir="calaos_mobile"
 
 source=('git://github.com/calaos/calaos_mobile.git#commit=cd0e0961706cdd76b60ffcb1912a07d237478355'

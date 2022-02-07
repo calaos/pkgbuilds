@@ -9,9 +9,8 @@ license=('GPL')
 arch=('any')
 depends=()
 makedepends=()
-conflicts=('calaos-web-app')
-replaces=('calaos-web-app')
-provides=('calaos-web-app')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 _pkgdir="$pkgname"
 
 source=('git://github.com/calaos/calaos-web-app.git#commit=7e980a1c9692d55e8a782df832473233ca226e30')
