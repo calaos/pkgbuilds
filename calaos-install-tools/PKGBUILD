@@ -22,4 +22,6 @@ package() {
   install -Dm755 "$srcdir/$pkgname/src/calaos_migrate.sh" "$pkgdir/usr/bin/calaos_migrate.sh"
   install -Dm755 "$srcdir/$pkgname/src/calaos_install.sh" "$pkgdir/usr/bin/calaos_install.sh"
   install -Dm755 "$srcdir/$pkgname/src/calaos_rollback.sh" "$pkgdir/usr/bin/calaos_rollback.sh"
+  install -Dm755 "$srcdir/$pkgname/src/calaos_influxdb_setup.sh" "$pkgdir/usr/bin/calaos_influxdb_setup.sh"
+  install -Dm755 "$srcdir/$pkgname/src/calaos-influxdb-setup.service" "$pkgdir/usr/lib/systemd/system/calaos-influxdb-setup.service"
 }
