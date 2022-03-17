@@ -1,13 +1,13 @@
 # Maintainer: Raoul Hecky <raoul-arch@calaos.fr>
 
 pkgname=zigbee2mqtt
-pkgver=1.22.2
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='A Zigbee to MQTT bridge'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.zigbee2mqtt.io'
 license=('GPL3')
-depends=('nodejs>=10.0' 'nodejs<17')
+depends=('nodejs>=10.0')
 makedepends=('typescript' 'npm')
 conflicts=('zigbee2mqtt')
 provides=('zigbee2mqtt')
@@ -48,7 +48,7 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
-sha256sums=('0b48dbb8442964be46e6a3293531e8fae768ab454177a103598f0fd4cdaa9b52'
+sha256sums=('cfa9c5b8c196a2891b0dfea78d3b4a15246d8360496b0bdfbd148068fc1c16fc'
             'ba2fe8f428b3db56fdee622b3db0d9265e34275218cfbae9866be2000fde9df4'
             '3a86716e9036e97d885e9b5f37c7f87d9c2872435e4acf9fc4c9157264cf387b'
             '8f0fbe06c8d6e8fdf37feb31f244930025d76785451f9049fd90fe6e23c259f6')
