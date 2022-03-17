@@ -5,6 +5,7 @@
 *.tar.zstd
 *.tar.zst
 *.sig
+*.deb
 
 pkg
 src
