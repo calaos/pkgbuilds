@@ -13,7 +13,7 @@ conflicts=("${pkgname}")
 options=('!strip')
 _pkgdir="$pkgname"
 
-source=("${pkgname}::git://github.com/calaos/calaos-os-conf.git#commit=33f794eb29636a0e0d02d5b4c10a2a0f100a97cf"
+source=("${pkgname}::git+https://github.com/calaos/calaos-os-conf.git#commit=33f794eb29636a0e0d02d5b4c10a2a0f100a97cf"
         )
 sha256sums=('SKIP'
             )

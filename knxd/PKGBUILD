@@ -13,7 +13,7 @@ depends=('gcc-libs' 'libev' 'libusb')
 optdepends=('libsystemd' 'libusb')
 makedepends=('fmt' 'git' 'libtool' 'autoconf' 'automake' 'pkgconfig')
 
-source=("git://github.com/knxd/${pkgname}.git#branch=main")
+source=("git+https://github.com/knxd/${pkgname}.git#branch=main")
 sha512sums=('SKIP')
 url="https://github.com/knxd/knxd"
 

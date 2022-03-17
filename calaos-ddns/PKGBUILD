@@ -15,7 +15,7 @@ conflicts=("${pkgname}")
 options=('!strip')
 _pkgdir="$pkgname"
 
-source=("${pkgname}::git://github.com/calaos/calaos_ddns.git#commit=27ebdfcd54b81d5c7d463a41af56190a8345f143"
+source=("${pkgname}::git+https://github.com/calaos/calaos_ddns.git#commit=27ebdfcd54b81d5c7d463a41af56190a8345f143"
         "${_pkgname}.service"
         "${_pkgname}.timer")
 sha256sums=('SKIP'

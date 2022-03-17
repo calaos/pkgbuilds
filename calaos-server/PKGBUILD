@@ -12,7 +12,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 _pkgdir="calaos_base"
 
-source=('git://github.com/calaos/calaos_base.git#commit=2ab947209716afbf332348855682a8253e27864a'
+source=('git+https://github.com/calaos/calaos_base.git#commit=2ab947209716afbf332348855682a8253e27864a'
 	'calaos-server.service'
   'calaos-server.tmpfiles')
 sha256sums=('SKIP'
