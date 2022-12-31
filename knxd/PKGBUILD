@@ -1,7 +1,7 @@
 # Maintainer: Raoul Hecky <raoul-arch@calaos.fr>
 pkgname='knxd'
 pkgver=1.r54de729
-pkgrel=1
+pkgrel=2
 pkgdesc='A server which provides an interface to a KNX/EIB installation'
 license=('GPL')
 
