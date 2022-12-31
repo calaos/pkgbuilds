@@ -2,7 +2,7 @@
 
 pkgname=ola
 pkgver=0.10.8.r1854.ga7ea17529
-pkgrel=1
+pkgrel=2
 
 python="python"
 # uncomment for python2 libs
