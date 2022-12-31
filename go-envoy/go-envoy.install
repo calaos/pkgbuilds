@@ -1,0 +1,6 @@
+post_install() {
+  #copy default config file if nothing is installed yet
+  if ! [ -e /etc/envoy.toml ] ; then
+    cp /usr/share/envoy/envoy.toml /etc/envoy.toml
+  fi
+}

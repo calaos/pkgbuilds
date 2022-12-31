@@ -1,0 +1,57 @@
+# Maintainer: Raoul Hecky <raoul-arch@calaos.fr>
+
+_pkgname=go-envoy
+pkgname=go-envoy
+pkgver=1.1
+pkgrel=1
+pkgdesc="Enphase Envoy "
+url="https://calaos.fr"
+license=('GPL')
+arch=('x86_64')
+depends=('gcc-libs')
+makedepends=('go')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+options=('!strip')
+_pkgdir="$pkgname"
+
+source=("${pkgname}::git+https://github.com/raoulh/go-envoy.git#commit=d8967adb6c9aef1a5439767a0d9cfc43239c324b")
+sha256sums=('SKIP')
+
+install=${pkgname}.install
+
+build() {
+  cd "$srcdir/$_pkgdir/cmd/envoy"
+
+  # Respect LDFLAGS
+  EXTLDFLAGS=${LDFLAGS}
+  LDFLAGS=""
+  GOCACHE="${srcdir}/cache" go build -v \
+      -ldflags "-linkmode external -extldflags '${EXTLDFLAGS}' -s -w ${LDFLAGS}"
+
+  cd "$srcdir/$_pkgdir/cmd/web"
+
+  # Respect LDFLAGS
+  EXTLDFLAGS=${LDFLAGS}
+  LDFLAGS=""
+  GOCACHE="${srcdir}/cache" go build -v \
+      -ldflags "-linkmode external -extldflags '${EXTLDFLAGS}' -s -w ${LDFLAGS}"
+}
+
+package() {
+  cd "$srcdir/$_pkgdir"
+  install -Dm644 "envoy.service" "$pkgdir/usr/lib/systemd/system/envoy.service"
+
+  install -Dm755 "$srcdir/$pkgname/cmd/envoy/envoy" "$pkgdir/usr/bin/envoy"
+  install -Dm755 "$srcdir/$pkgname/cmd/web/web" "$pkgdir/usr/bin/envoy_web"
+
+  install -d "$pkgdir/usr/share/envoy"
+	install -d "$pkgdir/usr/share/envoy/css"
+	install -d "$pkgdir/usr/share/envoy/js"
+	install -d "$pkgdir/usr/share/envoy/templates"
+	install -m 644 "$srcdir/$_pkgdir/web/css/simple.css" "$pkgdir/usr/share/envoy/css"
+	install -m 644 "$srcdir/$_pkgdir/web/js/index.js" "$pkgdir/usr/share/envoy/js"
+	install -m 644 "$srcdir/$_pkgdir/web/templates/index.html" "$pkgdir/usr/share/envoy/templates"
+
+  install -m 644 "$srcdir/$_pkgdir/envoy.toml" "$pkgdir/usr/share/envoy"
+}
