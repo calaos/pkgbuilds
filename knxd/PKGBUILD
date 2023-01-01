@@ -1,26 +1,21 @@
 # Maintainer: Raoul Hecky <raoul-arch@calaos.fr>
 pkgname='knxd'
-pkgver=1.r54de729
-pkgrel=2
+pkgver=0.14.56
+pkgrel=1
 pkgdesc='A server which provides an interface to a KNX/EIB installation'
 license=('GPL')
 
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 conflicts=('knxd' 'eibd')
 provides=('knxd')
 replaces=('eibd')
-depends=('gcc-libs' 'libev' 'libusb')
-optdepends=('libsystemd' 'libusb')
-makedepends=('fmt' 'git' 'libtool' 'autoconf' 'automake' 'pkgconfig')
+depends=('fmt' 'gcc-libs' 'libev' 'libusb')
+optdepends=('libsystemd')
+makedepends=('git' 'libtool' 'autoconf' 'automake' 'pkgconfig')
 
-source=("git+https://github.com/knxd/${pkgname}.git#branch=main")
+source=("git+https://github.com/knxd/${pkgname}.git#tag=${pkgver}")
 sha512sums=('SKIP')
 url="https://github.com/knxd/knxd"
-
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "%s.r%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
   cd "$srcdir/$pkgname"
