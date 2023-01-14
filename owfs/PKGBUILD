@@ -11,7 +11,7 @@ source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/$
         "systemd_journal.patch"
         "sysmacros.patch"
         "owfs.conf")
-depends=('avahi' 'fuse' 'perl' 'libusb')
+depends=('avahi' 'fuse' 'perl' 'libusb' 'libftdi')
 makedepends=('swig')
 sha1sums=('972ec907dc2d6db238288fb5de730e9b78790955'
           'ff13b0a3d56206e32cf0307042351298e3f27d2d'
