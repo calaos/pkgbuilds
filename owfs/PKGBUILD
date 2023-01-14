@@ -2,7 +2,7 @@
 
 pkgname=owfs
 pkgver=3.2p4
-pkgrel=3
+pkgrel=4
 pkgdesc="An easy way to use the powerful 1-wire system of Dallas/Maxim."
 arch=('x86_64')
 url="http://www.owfs.org/"
