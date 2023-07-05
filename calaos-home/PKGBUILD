@@ -15,7 +15,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 _pkgdir="calaos_mobile"
 
-source=('git+https://github.com/calaos/calaos_mobile.git#commit=cd0e0961706cdd76b60ffcb1912a07d237478355'
+source=('git+https://github.com/calaos/calaos_mobile.git'
 	'calaos-home.service')
 sha256sums=('SKIP'
             'e06a06c17a108e2b0f14dcad9ca854152f55536984ffee16a0ac34b159dd782e')
