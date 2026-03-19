@@ -12,16 +12,19 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}::git+https://github.com/sebt3/xinput_calibrator.git"
   "0001-Rewrite-float-array-code-to-prevent-segfault.patch"
-  "0002-Add-code-for-outputing-Matrix-calibration-to-file.patch")
+  "0002-Add-code-for-outputing-Matrix-calibration-to-file.patch"
+  "0003-Fix-build-with-Eigen5-replace-ansi-with-std-cpp14.patch")
 noextract=()
 sha256sums=('SKIP'
   "a19a2c6a9442a1dfbcc2308f2202972f5b291d90b9541ca7f40f6bfcee222a70"
-  "12057e47fa3037f81f66d7705827f7b6e428a337fbbc3cc52b05db35dbf5c94b")
+  "12057e47fa3037f81f66d7705827f7b6e428a337fbbc3cc52b05db35dbf5c94b"
+  "f6070ff6ebb85769414987ecd1ac98a1cb1c4b36b4b383b4fe07c0c52bf7da8a")
 
 prepare() {
   cd "$srcdir/${pkgname}"
   patch --forward --strip=1 --input="${srcdir}/0001-Rewrite-float-array-code-to-prevent-segfault.patch"
   patch --forward --strip=1 --input="${srcdir}/0002-Add-code-for-outputing-Matrix-calibration-to-file.patch"
+  patch --forward --strip=1 --input="${srcdir}/0003-Fix-build-with-Eigen5-replace-ansi-with-std-cpp14.patch"
 }
 
 build() {
